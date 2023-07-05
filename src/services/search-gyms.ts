@@ -19,7 +19,6 @@ export class SearchGymsService{
 	}: SeachGymsServiceRequest): Promise<SeachGymsServiceResponse> {
 
 		const gyms = await this.gymsRepository.searchMany(query, page);
-		console.log(gyms);
 		return {gyms};
 	}
     

@@ -16,6 +16,7 @@
     "test:e2e:watch": "vitest watch --dir src/http",
     "pretest:e2e": "run-s test:create-prisma-environment test:install-prisma-environment",
     "test:coverage": "vitest run --coverage",
+    "pretest:coverage": "run-s test:create-prisma-environment test:install-prisma-environment",
     "test:ui": "vitest --ui"
   },
   "keywords": [],
