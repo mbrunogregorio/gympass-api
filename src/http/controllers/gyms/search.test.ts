@@ -3,6 +3,7 @@ import request from 'supertest';
 import { app } from '@/app';
 import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user';
 import { prisma } from '@/lib/prisma';
+import { createGym } from '@/utils/test/create-gym';
 
 describe('Search Gyms (e2e)', () => {
 	beforeAll(async () => {
@@ -15,15 +16,7 @@ describe('Search Gyms (e2e)', () => {
 
 	it('should search a gym', async () => {
 		const { token } = await createAndAuthenticateUser(app, true);
-		await prisma.gym.create({
-			data: {
-				title: 'Bru Fit',
-				description: 'Lorem ipsum',
-				phone: '123456789',
-				latitude: -26.4345216,
-				longitude: -49.283072,
-			}
-		});
+		await createGym({title: 'Bru Fit', description: 'Lorem ipsum', phone: '1', latitude: -26.4345216,longitude: -49.283072});
 
 		const response = await request(app.server)
 			.get('/gyms/search')
