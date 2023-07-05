@@ -3,6 +3,8 @@ import request from 'supertest';
 import { app } from '@/app';
 import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user';
 import { prisma } from '@/lib/prisma';
+import { create } from 'domain';
+import { createGym } from '@/utils/test/create-gym';
 
 describe('Check in metrics (e2e)', () => {
 	beforeAll(async () => {
@@ -18,14 +20,12 @@ describe('Check in metrics (e2e)', () => {
 
 		const user = await prisma.user.findFirstOrThrow();
 
-		const gym = await prisma.gym.create({
-			data: {
-				title: 'Bruno Fit',
-				description: 'Lorem ipsum',
-				phone: '123456789',
-				latitude: -26.4345216,
-				longitude: -49.283072,
-			}
+		const gym = await createGym({
+			title: 'Bruno Fit',
+			description: 'Lorem ipsum',
+			phone: '123456789',
+			latitude: -26.4345216,
+			longitude: -49.283072,
 		});
 
 		await prisma.checkIn.createMany({

@@ -1,7 +1,7 @@
 import { GymsRepository } from '@/repositories/gyms-repository';
 import { Gym} from '@prisma/client';
 
-interface CreateGymServiceRequest {
+export interface CreateGymServiceRequest {
     title: string;
     description: string | null;
     phone: string | null;
