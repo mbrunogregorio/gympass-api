@@ -2,7 +2,6 @@ import { afterAll, beforeAll, describe, expect, it} from 'vitest';
 import request from 'supertest';
 import { app } from '@/app';
 import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user';
-import { prisma } from '@/lib/prisma';
 import { createGym } from '@/utils/test/create-gym';
 
 describe('Check in Gym (e2e)', () => {
