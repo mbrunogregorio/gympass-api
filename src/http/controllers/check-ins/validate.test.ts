@@ -19,13 +19,7 @@ describe('Check in Validate (e2e)', () => {
 
 		const user = await prisma.user.findFirstOrThrow();
 
-		const gym = await createGym({
-			title: 'Bruno Fit',
-			description: 'Lorem ipsum',
-			phone: '123456789',
-			latitude: -26.4345216,
-			longitude: -49.283072,
-		});
+		const gym = await createGym({title: 'Bruno Fit', description: 'Lorem ipsum', phone: '1', latitude: -26.4345216,longitude: -49.283072});
 
 		let checkIn = await prisma.checkIn.create({
 			data: {

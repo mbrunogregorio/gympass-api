@@ -16,13 +16,7 @@ describe('Check in Gym (e2e)', () => {
 
 	it('should create a new check in', async () => {
 		const { token } = await createAndAuthenticateUser(app);
-		const gym = await createGym({
-			title: 'Bruno Fit',
-			description: 'Lorem ipsum',
-			phone: '123456789',
-			latitude: -26.4345216,
-			longitude: -49.283072,
-		});
+		const gym = await createGym({title: 'Bruno Fit', description: 'Lorem ipsum', phone: '1', latitude: -26.4345216,longitude: -49.283072});
 
 		const response = await request(app.server)
 			.post(`/gyms/${gym.id}/check-ins`)

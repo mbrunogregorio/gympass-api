@@ -18,26 +18,12 @@ describe('Check in history (e2e)', () => {
 		const { token } = await createAndAuthenticateUser(app);
 
 		const user = await prisma.user.findFirstOrThrow();
+		
+		const gym = await createGym({title: 'Bruno Fit', description: 'Lorem ipsum', phone: '1', latitude: -26.4345216,longitude: -49.283072});
 
-		const gym = await createGym({
-			title: 'Bruno Fit',
-			description: 'Lorem ipsum',
-			phone: '123456789',
-			latitude: -26.4345216,
-			longitude: -49.283072,
-		});
-
+		const checkInInfo = {user_id: user.id,gym_id: gym.id};
 		await prisma.checkIn.createMany({
-			data: [
-				{
-					user_id: user.id,
-					gym_id: gym.id,
-				},
-				{
-					user_id: user.id,
-					gym_id: gym.id,
-				},
-			],
+			data: [checkInInfo, checkInInfo],
 		});
 
 		const response = await request(app.server)

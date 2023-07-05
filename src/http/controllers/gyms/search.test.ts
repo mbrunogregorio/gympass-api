@@ -16,13 +16,7 @@ describe('Search Gyms (e2e)', () => {
 
 	it('should search a gym', async () => {
 		const { token } = await createAndAuthenticateUser(app, true);
-		await createGym({
-			title: 'Bru Fit',
-			description: 'Lorem ipsum',
-			phone: '123456789',
-			latitude: -26.4345216,
-			longitude: -49.283072,
-		});
+		await createGym({title: 'Bru Fit', description: 'Lorem ipsum', phone: '1', latitude: -26.4345216,longitude: -49.283072});
 
 		const response = await request(app.server)
 			.get('/gyms/search')
