@@ -8,8 +8,8 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  run-unit-tests:
-    name: Run Unit Tests
+  run-coverage-publish-to-sonarcloud:
+    name: Run coverage and publish to SonarCloud
     runs-on: ubuntu-latest
 
     services:
